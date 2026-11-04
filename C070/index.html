@@ -1,0 +1,86 @@
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Brandsimulering C070</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one technical column; each animation stands above the data it came from */
+:root{--bg:#f3f4f5;--panel:#ffffff;--fg:#1d2226;--mute:#5b656d;--line:#d5d9dc;--accent:#a8201a;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181a;--panel:#1e2225;--fg:#e8ebed;--mute:#a0aab1;--line:#343a3f;--accent:#ef7e72;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15181a;--panel:#1e2225;--fg:#e8ebed;--mute:#a0aab1;--line:#343a3f;--accent:#ef7e72;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--sans);padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:860px;margin:auto;display:grid;gap:30px}main>*{min-width:0}
+h1{font-size:27px;margin:0 0 6px;text-wrap:balance}h2{font-size:18px;margin:0 0 8px;color:var(--accent);text-wrap:balance}
+p{margin:0 0 10px;max-width:68ch}.lead{color:var(--mute)}
+video{width:100%;max-width:100%;display:block;background:#000;border-radius:3px}figure{margin:0;display:grid;gap:6px}figcaption{font-size:13px;color:var(--mute)}
+.t{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:3px}table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:5px 9px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}
+details{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:9px 12px}summary{cursor:pointer;font-weight:600}summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+pre{font:12px/1.45 var(--mono);overflow-x:auto;margin:10px 0 0}.f{font:13px var(--mono);color:var(--mute)}
+</style></head><body>
+
+<main><header><h1>Brandsimulering, sag C070</h1><p class="lead">Beregningsbilag til den brandtekniske vurdering. Beregningen er vejledende og er ikke en klassifikation efter DS/EN 13501-2.</p><p class="f">T = 20 + 345·log₁₀(8t + 1) °C · kriterium 180 K · krav 60 min · Run-data er genereret direkte fra resultatfilerne</p></header>
+<section id="fds_slices"><h2>Gastemperatur i rummet</h2><figure><video controls muted playsinline preload="metadata" src="fds_slices.mp4"></video><figcaption>Rumbrand beregnet med FDS 6.11.1: temperatur i snit gennem gennemføringen, som vises med en rød cylinder.</figcaption></figure></section>
+<section id="fds_flames"><h2>Flammer i rummet</h2><figure><video controls muted playsinline preload="metadata" src="fds_flames.mp4"></video><figcaption>Smokeview-gengivelse af FDS-resultatet. Sod er skjult, så flammerne kan ses. I virkeligheden er rummet fyldt med tæt røg.</figcaption></figure></section>
+<section id="cutaway_iso834"><h2>Temperatur i gennemføringen</h2><figure><video controls muted playsinline preload="metadata" src="cutaway_iso834.mp4"></video><figcaption>ISO 834 fra undersiden i 120 min. Temperaturfeltet er roteret til et 3D-udsnit.</figcaption></figure></section>
+<section id="parametre"><h2>Parametre</h2><div class="t"><table><thead><tr><th>Parameter</th><th>Område</th><th>Status</th></tr></thead><tbody><tr><td>Rørdiameter</td><td>0.11–0.25 m</td><td>antaget</td></tr><tr><td>Isoleringstykkelse</td><td>0.015–0.04 m</td><td>udledt</td></tr><tr><td>Dæktykkelse</td><td>0.15–0.3 m</td><td>antaget</td></tr><tr><td>SDR</td><td>11–26 -</td><td>antaget</td></tr><tr><td>Lukketid for manchet</td><td>300–1500 s</td><td>modelparameter</td></tr></tbody></table></div></section>
+<section id="scenarier"><h2>Scenarier</h2><div class="t"><table><thead><tr><th>Scenarie</th><th>t(180 K) [min]</th><th>Styrende punkt</th></tr></thead><tbody><tr><td>tørt rør (U/U, som prøvet)</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>vandfyldt rør (lukket system)</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>manchet lukker ikke (svigt)</td><td>43</td><td>isolering 25 mm fra lukning</td></tr><tr><td>Prøvet grundlag (samme model)</td><td>113</td><td>dækoverside</td></tr></tbody></table></div></section>
+<details><summary>Alle 48 kørsler, sæt „manchet lukker": median ≥ 120 min, laveste 112 min</summary><div style="margin-top:10px"><div class="t"><table><thead><tr><th>Kørsel</th><th>Rørdiameter</th><th>Isoleringstykkelse</th><th>Dæktykkelse</th><th>SDR</th><th>Lukketid for manchet</th><th>t(180 K) [min]</th><th>Styrende punkt</th></tr></thead><tbody><tr><td>1</td><td>0.12</td><td>0.0291</td><td>0.279</td><td>23.1</td><td>567</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>2</td><td>0.11</td><td>0.0249</td><td>0.285</td><td>15.1</td><td>1.11e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>3</td><td>0.223</td><td>0.031</td><td>0.271</td><td>21.8</td><td>1.26e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>4</td><td>0.208</td><td>0.0395</td><td>0.291</td><td>16.1</td><td>350</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>5</td><td>0.133</td><td>0.0243</td><td>0.217</td><td>18.8</td><td>724</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>6</td><td>0.24</td><td>0.0356</td><td>0.169</td><td>12.1</td><td>462</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>7</td><td>0.152</td><td>0.0378</td><td>0.262</td><td>13.8</td><td>808</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>8</td><td>0.235</td><td>0.032</td><td>0.159</td><td>11.7</td><td>846</td><td>113.2</td><td>dækoverside</td></tr><tr><td>9</td><td>0.194</td><td>0.039</td><td>0.202</td><td>15.7</td><td>1.41e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>10</td><td>0.227</td><td>0.016</td><td>0.186</td><td>25.8</td><td>1.35e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>11</td><td>0.129</td><td>0.022</td><td>0.153</td><td>24.3</td><td>992</td><td>119.2</td><td>dækoverside</td></tr><tr><td>12</td><td>0.156</td><td>0.0203</td><td>0.23</td><td>24.4</td><td>885</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>13</td><td>0.169</td><td>0.0261</td><td>0.267</td><td>11.3</td><td>1.24e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>14</td><td>0.173</td><td>0.0226</td><td>0.2</td><td>14.4</td><td>345</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>15</td><td>0.219</td><td>0.0305</td><td>0.288</td><td>14.2</td><td>1.32e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>16</td><td>0.125</td><td>0.0171</td><td>0.272</td><td>24.9</td><td>621</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>17</td><td>0.179</td><td>0.0286</td><td>0.167</td><td>23.8</td><td>903</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>18</td><td>0.161</td><td>0.0256</td><td>0.224</td><td>14.9</td><td>1.44e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>19</td><td>0.192</td><td>0.0187</td><td>0.177</td><td>14</td><td>1.29e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>20</td><td>0.204</td><td>0.0317</td><td>0.196</td><td>25.4</td><td>947</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>21</td><td>0.247</td><td>0.0167</td><td>0.236</td><td>13</td><td>578</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>22</td><td>0.199</td><td>0.0209</td><td>0.254</td><td>21.2</td><td>1.46e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>23</td><td>0.187</td><td>0.0385</td><td>0.181</td><td>21.3</td><td>875</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>24</td><td>0.21</td><td>0.0182</td><td>0.215</td><td>16.5</td><td>1.15e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>25</td><td>0.227</td><td>0.035</td><td>0.244</td><td>22.4</td><td>507</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>26</td><td>0.15</td><td>0.03</td><td>0.264</td><td>20</td><td>391</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>27</td><td>0.142</td><td>0.0199</td><td>0.205</td><td>12.5</td><td>951</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>28</td><td>0.117</td><td>0.0364</td><td>0.161</td><td>20.2</td><td>653</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>29</td><td>0.114</td><td>0.0215</td><td>0.242</td><td>19.2</td><td>1.09e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>30</td><td>0.201</td><td>0.0269</td><td>0.296</td><td>12.7</td><td>626</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>31</td><td>0.232</td><td>0.0328</td><td>0.257</td><td>22.7</td><td>1.03e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>32</td><td>0.195</td><td>0.0383</td><td>0.174</td><td>18.4</td><td>1.15e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>33</td><td>0.165</td><td>0.015</td><td>0.25</td><td>23.5</td><td>310</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>34</td><td>0.243</td><td>0.023</td><td>0.192</td><td>19.7</td><td>1.33e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>35</td><td>0.147</td><td>0.0345</td><td>0.282</td><td>17.8</td><td>1.5e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>36</td><td>0.176</td><td>0.036</td><td>0.226</td><td>25.5</td><td>747</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>37</td><td>0.139</td><td>0.0161</td><td>0.154</td><td>20.5</td><td>477</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>38</td><td>0.218</td><td>0.0181</td><td>0.241</td><td>15.6</td><td>694</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>39</td><td>0.185</td><td>0.0277</td><td>0.209</td><td>23.9</td><td>546</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>40</td><td>0.245</td><td>0.0374</td><td>0.165</td><td>20.7</td><td>762</td><td>112.3</td><td>dækoverside</td></tr><tr><td>41</td><td>0.137</td><td>0.0339</td><td>0.276</td><td>19.1</td><td>1.06e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>42</td><td>0.136</td><td>0.0281</td><td>0.209</td><td>13.2</td><td>449</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>43</td><td>0.182</td><td>0.0195</td><td>0.222</td><td>18</td><td>1.18e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>44</td><td>0.214</td><td>0.0234</td><td>0.182</td><td>17.2</td><td>1.01e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>45</td><td>0.166</td><td>0.0326</td><td>0.298</td><td>11.4</td><td>410</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>46</td><td>0.159</td><td>0.0334</td><td>0.248</td><td>22</td><td>1.2e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>47</td><td>0.124</td><td>0.0271</td><td>0.232</td><td>17.3</td><td>796</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr><tr><td>48</td><td>0.238</td><td>0.0251</td><td>0.19</td><td>16.8</td><td>1.38e+03</td><td>≥ 120</td><td>isolering 25 mm fra lukning</td></tr></tbody></table></div></div></details>
+<details><summary>FDS-inputfil</summary><pre>&amp;HEAD CHID=&#x27;C070&#x27;,TITLE=&#x27;Sag C070&#x27; /
+&amp;MESH IJK=20,15,13,XB=0,4.0,0,3.0,0,2.6 /
+&amp;TIME T_END=900 /
+&amp;DUMP DT_SLCF=5.,DT_BNDF=10.,DT_SMOKE3D=2.,DT_HRR=2.,DT_DEVC=2.,DT_PL3D=10000.,DT_RESTART=120. /
+&amp;MISC TMPA=20. /
+&amp;REAC FUEL=&#x27;WOODFUEL&#x27;,C=3.4,H=6.2,O=2.5,SOOT_YIELD=0.04,CO_YIELD=0.02,HEAT_OF_COMBUSTION=17500. /
+&amp;MATL ID=&#x27;CONCRETE&#x27;,DENSITY=2300.,CONDUCTIVITY=1.6,SPECIFIC_HEAT=1.0,EMISSIVITY=0.7 /
+&amp;MATL ID=&#x27;GYPSUM&#x27;,DENSITY=800.,CONDUCTIVITY=0.25,SPECIFIC_HEAT=1.0,EMISSIVITY=0.9 /
+&amp;MATL ID=&#x27;WOOD&#x27;,DENSITY=450.,CONDUCTIVITY=0.13,SPECIFIC_HEAT=1.6,EMISSIVITY=0.9 /
+&amp;MATL ID=&#x27;WOOL&#x27;,DENSITY=100.,CONDUCTIVITY=0.06,SPECIFIC_HEAT=0.84,EMISSIVITY=0.9 /
+&amp;SURF ID=&#x27;CONC&#x27;,RGB=178,178,178,MATL_ID=&#x27;CONCRETE&#x27;,THICKNESS=0.20,BACKING=&#x27;EXPOSED&#x27;,TRANSPARENCY=1.0 /
+&amp;SURF ID=&#x27;CONCW&#x27;,RGB=204,204,204,MATL_ID=&#x27;CONCRETE&#x27;,THICKNESS=0.15,BACKING=&#x27;EXPOSED&#x27;,TRANSPARENCY=0.35 /
+&amp;SURF ID=&#x27;GYPW&#x27;,RGB=240,235,215,MATL_ID=&#x27;GYPSUM&#x27;,THICKNESS=0.05,BACKING=&#x27;EXPOSED&#x27;,TRANSPARENCY=0.35 /
+&amp;SURF ID=&#x27;TIMBERCEIL&#x27;,RGB=222,184,135,MATL_ID(1,1)=&#x27;GYPSUM&#x27;,MATL_ID(2,1)=&#x27;WOOL&#x27;,THICKNESS(1:2)=0.03,0.30,BACKING=&#x27;EXPOSED&#x27; /
+&amp;SURF ID=&#x27;BOARD&#x27;,RGB=233,150,122,MATL_ID=&#x27;WOOL&#x27;,THICKNESS=0.10,BACKING=&#x27;EXPOSED&#x27; /
+&amp;SURF ID=&#x27;FURN&#x27;,RGB=139,69,19,MATL_ID=&#x27;WOOD&#x27;,THICKNESS=0.05 /
+
+&amp;SURF ID=&#x27;FIRE&#x27;,RGB=220,40,30,HRRPUA=1339.3,RAMP_Q=&#x27;T2&#x27; /
+&amp;RAMP ID=&#x27;T2&#x27;,T=0.0,F=0.0000 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=26.0,F=0.0100 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=52.0,F=0.0400 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=77.9,F=0.0900 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=103.9,F=0.1600 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=129.9,F=0.2500 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=155.9,F=0.3600 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=181.9,F=0.4900 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=207.8,F=0.6400 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=233.8,F=0.8100 /
+&amp;RAMP ID=&#x27;T2&#x27;,T=259.8,F=1.0000 /
+&amp;OBST XB=0.40,2.00,0.40,1.80,0.00,0.40,SURF_IDS=&#x27;FIRE&#x27;,&#x27;FURN&#x27;,&#x27;FURN&#x27;,RGB=139,69,19 /
+
+&amp;VENT XB=4.0,4.0,1.00,2.00,0,2.0,SURF_ID=&#x27;OPEN&#x27; /
+&amp;VENT MB=&#x27;ZMAX&#x27;,SURF_ID=&#x27;CONC&#x27; /
+&amp;VENT MB=&#x27;ZMIN&#x27;,SURF_ID=&#x27;CONC&#x27; /
+&amp;VENT MB=&#x27;XMIN&#x27;,SURF_ID=&#x27;CONCW&#x27; /
+&amp;VENT MB=&#x27;YMIN&#x27;,SURF_ID=&#x27;CONCW&#x27; /
+&amp;VENT MB=&#x27;YMAX&#x27;,SURF_ID=&#x27;CONCW&#x27; /
+&amp;VENT MB=&#x27;XMAX&#x27;,SURF_ID=&#x27;CONCW&#x27; /
+&amp;OBST XB=2.6,2.8,2.0,2.2,0,2.6,SURF_ID=&#x27;BOARD&#x27;,RGB=192,192,192 /
+&amp;OBST XB=3.0,3.2,2.0,2.2,0,2.6,SURF_ID=&#x27;BOARD&#x27;,RGB=192,192,192 /
+&amp;DEVC ID=&#x27;AST_P&#x27;,QUANTITY=&#x27;ADIABATIC SURFACE TEMPERATURE&#x27;,XYZ=2.80,2.20,2.60,IOR=-3 /
+&amp;DEVC ID=&#x27;HTC_P&#x27;,QUANTITY=&#x27;HEAT TRANSFER COEFFICIENT&#x27;,XYZ=2.80,2.20,2.60,IOR=-3 /
+&amp;DEVC ID=&#x27;WALLT_P&#x27;,QUANTITY=&#x27;WALL TEMPERATURE&#x27;,XYZ=2.80,2.20,2.60,IOR=-3 /
+&amp;DEVC ID=&#x27;HF_P&#x27;,QUANTITY=&#x27;GAUGE HEAT FLUX&#x27;,XYZ=2.80,2.20,2.60,IOR=-3 /
+&amp;DEVC ID=&#x27;GAS_P&#x27;,QUANTITY=&#x27;TEMPERATURE&#x27;,XYZ=2.80,2.20,2.45 /
+&amp;DEVC ID=&#x27;TREE_0.3&#x27;,QUANTITY=&#x27;TEMPERATURE&#x27;,XYZ=2.80,2.20,0.30 /
+&amp;DEVC ID=&#x27;TREE_0.9&#x27;,QUANTITY=&#x27;TEMPERATURE&#x27;,XYZ=2.80,2.20,0.90 /
+&amp;DEVC ID=&#x27;TREE_1.5&#x27;,QUANTITY=&#x27;TEMPERATURE&#x27;,XYZ=2.80,2.20,1.50 /
+&amp;DEVC ID=&#x27;TREE_2.1&#x27;,QUANTITY=&#x27;TEMPERATURE&#x27;,XYZ=2.80,2.20,2.10 /
+
+&amp;SLCF PBY=2.20,QUANTITY=&#x27;TEMPERATURE&#x27;,VECTOR=.TRUE. /
+&amp;SLCF PBX=2.80,QUANTITY=&#x27;TEMPERATURE&#x27; /
+&amp;SLCF PBZ=2.30,QUANTITY=&#x27;TEMPERATURE&#x27; /
+&amp;SLCF PBY=2.20,QUANTITY=&#x27;VISIBILITY&#x27; /
+&amp;BNDF QUANTITY=&#x27;ADIABATIC SURFACE TEMPERATURE&#x27; /
+&amp;BNDF QUANTITY=&#x27;GAUGE HEAT FLUX&#x27; /
+&amp;TAIL /
+</pre></details>
+<footer class="f">Software: FDS 6.11.1 og Smokeview 6.11.2 (NIST); egen varmeledningsmodel, kontrolleret mod analytiske løsninger og scikit-fem.</footer></main></body></html>
